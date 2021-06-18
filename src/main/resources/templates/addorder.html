@@ -9,12 +9,12 @@
 </head>
 <body>
 <div class="container my-3">
-    <form action="#" th:action="@{ordes/addorder}" th:object="${order}" method="post">
+    <form action="#" th:action="@{/orders/addorder}" th:object="${order}" method="post">
         <input class="form-control mb-2 col-4" type="text"  th:field="*{orderInfo}" placeholder="Info">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressFrom.name}" placeholder="Address From">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressFrom.phone}" placeholder="Phone From">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressTo.name}" placeholder="Address To">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressTo.phone}" placeholder="Phone To">
+        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressFrom}" th:text="*{addressFrom.name}" placeholder="Address From">
+        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressFrom.phone}" th:text="*{addressFrom.phone}" placeholder="Phone From">
+        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressTo.name}" th:text="*{addressTo.name}" placeholder="Address To">
+        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressTo.phone}" th:text="*{addressTo.name}" placeholder="Phone To">
         <input class="form-control mb-2 col-4" type="text"  th:field="*{ransomSum}" placeholder="Order price">
         <input class="form-control mb-2 col-4" type="text"  th:field="*{deliveryPrice}" placeholder="Delivery price">
         <label>Couriers</label>

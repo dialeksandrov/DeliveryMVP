@@ -43,7 +43,6 @@ public class OrderController {
     public String showAddOrder(Model model){
         model.addAttribute("title", "Add order");
         model.addAttribute(new Order());
-
         model.addAttribute("orderStatus", orderStatusRepo.findAll());
         model.addAttribute("admin", adminRepo.findAll());
         model.addAttribute("courier", courierRepo.findAll());
@@ -53,8 +52,6 @@ public class OrderController {
     @PostMapping("/addorder")
     public String addOrder(@ModelAttribute Order order, Model model) {
         model.addAttribute("title", "All Orders");
-        model.addAttribute("admin", adminRepo.findAll());
-        model.addAttribute("courier", courierRepo.findAll());
         orderService.saveOrder(order);
         return "redirect:/orders/all";
     }

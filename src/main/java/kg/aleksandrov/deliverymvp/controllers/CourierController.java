@@ -29,7 +29,6 @@ public class CourierController {
     public String getCourierTable(Model model) {
         model.addAttribute("title", "All Couriers");
         model.addAttribute("couriers", courierService.findAll());
-        System.out.println(courierService.findAll());
         return "courier-table";
     }
 
