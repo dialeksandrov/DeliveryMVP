@@ -14,7 +14,6 @@ public class Address {
      private String name;
      private String phone;
 
-     @ManyToOne(cascade = CascadeType.ALL)
-     private Order order;
+
 
 }

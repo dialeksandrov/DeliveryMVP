@@ -9,16 +9,16 @@
 </head>
 <body>
 <div class="container my-3">
-    <form action="#" th:action="@{ordes/addorder}" th:object="${order}" method="post">
+    <form action="#" th:action="@{orders/edit/{orderId}" th:object="${order}" method="post">
         <input class="form-control mb-2 col-4" type="text"  th:field="*{orderInfo}" placeholder="Info">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressFrom.name}" placeholder="Address From">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressFrom.phone}" placeholder="Phone From">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressTo.name}" placeholder="Address To">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressTo.phone}" placeholder="Phone To">
+        <input type="text" name="address_from" id="details" placeholder="From address" class="form-control mb-2 col-4">
+        <input type="text" name="phone" id="details" placeholder="From Phone" class="form-control mb-2 col-4">
+        <input type="text" name="address_to" id="details" placeholder="To address" class="form-control mb-2 col-4">
+        <input type="text" name="phone" id="details" placeholder="To Phone" class="form-control mb-2 col-4">
         <input class="form-control mb-2 col-4" type="text"  th:field="*{ransomSum}" placeholder="Order price">
         <input class="form-control mb-2 col-4" type="text"  th:field="*{deliveryPrice}" placeholder="Delivery price">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{courier.firstName}" placeholder="Courier">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{admin.firstName}" placeholder="Admin">
+        <input class="form-control mb-2 col-4" type="text"  th:field="*{courier}" placeholder="Courier">
+        <input class="form-control mb-2 col-4" type="text"  th:field="*{admin}" placeholder="Admin">
         <input class="form-control mb-2 col-4" type="text"  th:field="*{comments}" placeholder="Comments">
         <select th:field="*{orderStatus}" class="form-control mb-2 col-4" >
             <option th:each="orderStatuses:${orderStatus}" th:value="${orderStatuses.orderStatusId}" th:text="${orderStatuses.name}"></option>

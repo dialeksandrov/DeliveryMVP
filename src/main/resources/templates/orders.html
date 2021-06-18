@@ -30,6 +30,7 @@
             <th>Admin</th>
             <th>Comments</th>
             <th>Status</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody class="shadow p-3 mb-5 bg-body rounded">
@@ -37,14 +38,15 @@
             <td th:text="${order.orderId}"></td>
             <td th:text="${#dates.format(order.orderDate, 'dd.MM.yyyy hh:MM')}"></td>
             <td th:text="${order.orderInfo}"></td>
-            <td th:text="${order.addressFrom.getName()}"></td>
-            <td th:text="${order.addressTo.getName()}"></td>
+            <td th:text="${order.addressFrom}"></td>
+            <td th:text="${order.addressTo}"></td>
             <td th:text="${order.ransomSum}"></td>
             <td th:text="${order.deliveryPrice}"></td>
             <td th:text="${order.courier.getFirstName()}"></td>
             <td th:text="${order.admin.getFirstName()}"></td>
             <td th:text="${order.comments}"></td>
             <td th:text="${order.orderStatus.getName()}"></td>
+            <td><a th:href="@{/edit/{id}(id=${order.orderId})}" class="btn btn-warning">Edit</a><a th:href="@{/delete/{id}(id=${order.orderId})}" class="btn btn-danger">Delete</a></td>
         </tr>
         </tbody>
     </table>

@@ -37,8 +37,13 @@ public class Order {
     @JoinColumn(name = "courier_id", nullable = false)
     private Courier courier;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<Address> address;
+    @ManyToOne
+    @JoinColumn(name = "address_from_id", nullable = false)
+    private Address addressFrom;
+
+    @ManyToOne
+    @JoinColumn(name = "address_to_id", nullable = false)
+    private Address addressTo;
 
     @ManyToOne
     @JoinColumn(name = "order_status_id")
