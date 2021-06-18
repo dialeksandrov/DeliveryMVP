@@ -17,8 +17,14 @@
         <input class="form-control mb-2 col-4" type="text"  th:field="*{addressTo.phone}" placeholder="Phone To">
         <input class="form-control mb-2 col-4" type="text"  th:field="*{ransomSum}" placeholder="Order price">
         <input class="form-control mb-2 col-4" type="text"  th:field="*{deliveryPrice}" placeholder="Delivery price">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{courier.firstName}" placeholder="Courier">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{admin.firstName}" placeholder="Admin">
+        <label>Couriers</label>
+        <select th:field="*{courier}" class="form-control mb-2 col-4">
+            <option th:each="couriers:${courier}" th:value="${couriers.courierId}" th:text="${couriers.firstName}"></option>
+        </select>
+        <label>Admins</label>
+        <select th:field="*{admin}" class="form-control mb-2 col-4">
+            <option th:each="admins:${admin}" th:value="${admins.adminId}" th:text="${admins.firstName}"></option>
+        </select>
         <input class="form-control mb-2 col-4" type="text"  th:field="*{comments}" placeholder="Comments">
         <select th:field="*{orderStatus}" class="form-control mb-2 col-4" >
             <option th:each="orderStatuses:${orderStatus}" th:value="${orderStatuses.orderStatusId}" th:text="${orderStatuses.name}"></option>
