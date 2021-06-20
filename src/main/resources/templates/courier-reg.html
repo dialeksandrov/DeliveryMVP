@@ -12,6 +12,7 @@
 <form action="#" th:action="@{/courier-reg}" th:object="${courier}" method="post">
     <input class="form-control mb-2 col-4" type="text"  th:field="*{firstName}" placeholder="First name">
     <input class="form-control mb-2 col-4" type="text"  th:field="*{lastName}" placeholder="Last name">
+    <input class="form-control mb-2 col-4" type="text" th:field="*{phone}" placeholder="Phone">
     <select th:field="*{courierStatus}" class="form-control mb-2 col-4" >
         <option th:each="courierStatuses:${courierStatus}" th:value="${courierStatuses.courierStatusId}" th:text="${courierStatuses.name}"></option>
     </select>

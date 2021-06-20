@@ -8,25 +8,35 @@
           crossorigin="anonymous">
 </head>
 <body>
-<div class="container my-3">
+<div class="container my-3" style="width: 500px; margin: auto">
+    <h1>Adding an order</h1>
     <form action="#" th:action="@{/orders/addorder}" th:object="${order}" method="post">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{orderInfo}" placeholder="Info">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressFrom}" th:text="*{addressFrom.name}" placeholder="Address From">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressFrom.phone}" th:text="*{addressFrom.phone}" placeholder="Phone From">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressTo.name}" th:text="*{addressTo.name}" placeholder="Address To">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{addressTo.phone}" th:text="*{addressTo.name}" placeholder="Phone To">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{ransomSum}" placeholder="Order price">
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{deliveryPrice}" placeholder="Delivery price">
+        <label>Order info</label>
+        <input class="form-control form-control-sm mb-1 col-2" type="text"  th:field="*{orderInfo}"  placeholder="Order name">
+        <label>From address</label>
+        <input class="form-control form-control-sm mb-1 col-2" type="text"  th:field="*{addressFrom.name}"  placeholder="Address From">
+        <label>From phone</label>
+        <input class="form-control form-control-sm mb-1 col-2" type="text"  th:field="*{addressFrom.phone}"  placeholder="Phone From">
+        <label>To address</label>
+        <input class="form-control form-control-sm mb-1 col-2" type="text"  th:field="*{addressTo.name}"  placeholder="Address To">
+        <label>To phone</label>
+        <input class="form-control form-control-sm mb-1 col-2" type="text"  th:field="*{addressTo.phone}"  placeholder="Phone To">
+        <label>Order price</label>
+        <input class="form-control form-control-sm mb- col-2" type="text"  th:field="*{ransomSum}" pattern="^[ 0-9]+$" placeholder="Order price">
+        <label>Delivery price</label>
+        <input class="form-control form-control-sm mb- col-2" type="text"  th:field="*{deliveryPrice}" pattern="^[ 0-9]+$" placeholder="Delivery price">
         <label>Couriers</label>
-        <select th:field="*{courier}" class="form-control mb-2 col-4">
+        <select th:field="*{courier}" class="form-control form-control-sm mb-1 col-2">
             <option th:each="couriers:${courier}" th:value="${couriers.courierId}" th:text="${couriers.firstName}"></option>
         </select>
         <label>Admins</label>
-        <select th:field="*{admin}" class="form-control mb-2 col-4">
+        <select th:field="*{admin}" class="form-control form-control-sm mb-1 col-2">
             <option th:each="admins:${admin}" th:value="${admins.adminId}" th:text="${admins.firstName}"></option>
         </select>
-        <input class="form-control mb-2 col-4" type="text"  th:field="*{comments}" placeholder="Comments">
-        <select th:field="*{orderStatus}" class="form-control mb-2 col-4" >
+        <label>Order description</label>
+        <input class="form-control form-control-sm mb-1 col-2" type="text"  th:field="*{comments}" placeholder="Comments">
+        <label>Order status</label>
+        <select th:field="*{orderStatus}" class="form-control form-control-sm mb-1 col-2" >
             <option th:each="orderStatuses:${orderStatus}" th:value="${orderStatuses.orderStatusId}" th:text="${orderStatuses.name}"></option>
         </select>
         <input type="submit" class="btn btn-success" value="Save">

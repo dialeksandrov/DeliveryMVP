@@ -3,6 +3,9 @@ package kg.aleksandrov.deliverymvp.models.entity;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 import java.util.Date;
 import java.util.List;
 
@@ -16,10 +19,15 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderId;
 
+    @NotNull(message = "Информация о заказе не может быть пустой")
     private String orderInfo;
 
+    @NotNull
+    @Positive
     private Long ransomSum;
 
+    @NotNull
+    @Positive
     private Long deliveryPrice;
 
     private String comments;
@@ -37,12 +45,12 @@ public class Order {
     @JoinColumn(name = "courier_id", nullable = false)
     private Courier courier;
 
-    @ManyToOne
-    @JoinColumn(name = "address_from_id", nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_from_id")
     private Address addressFrom;
 
-    @ManyToOne
-    @JoinColumn(name = "address_to_id", nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_to_id")
     private Address addressTo;
 
     @ManyToOne

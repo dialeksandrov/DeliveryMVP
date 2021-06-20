@@ -24,6 +24,9 @@ public class Courier {
     private String lastName;
 
     @NotNull
+    private String phone;
+
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "courier_status_id")
     private CourierStatus courierStatus;

@@ -20,6 +20,7 @@
             <th>Id</th>
             <th>First name</th>
             <th>Last name</th>
+            <th>Phone</th>
             <th>Status</th>
             <th>Actions</th>
         </tr>
@@ -29,6 +30,7 @@
             <td th:text="${courier.courierId}"></td>
             <td th:text="${courier.firstName}"></td>
             <td th:text="${courier.lastName}"></td>
+            <td th:text="${courier.phone}"></td>
             <td th:text="${courier.courierStatus.getName()}"></td>
             <td><a th:href="@{/edit/{id}(id=${courier.courierId})}" class="btn btn-warning">Edit</a><a th:href="@{/delete/{id}(id=${courier.courierId})}" class="btn btn-danger">Delete</a></td>
         </tr>

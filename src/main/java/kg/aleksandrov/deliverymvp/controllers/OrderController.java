@@ -6,10 +6,12 @@ import kg.aleksandrov.deliverymvp.dao.CourierRepo;
 import kg.aleksandrov.deliverymvp.dao.OrderStatusRepo;
 import kg.aleksandrov.deliverymvp.models.entity.Address;
 import kg.aleksandrov.deliverymvp.models.entity.Admin;
+import kg.aleksandrov.deliverymvp.models.entity.Courier;
 import kg.aleksandrov.deliverymvp.models.entity.Order;
 import kg.aleksandrov.deliverymvp.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,6 +54,7 @@ public class OrderController {
     @PostMapping("/addorder")
     public String addOrder(@ModelAttribute Order order, Model model) {
         model.addAttribute("title", "All Orders");
+
         orderService.saveOrder(order);
         return "redirect:/orders/all";
     }
@@ -59,6 +62,8 @@ public class OrderController {
     public String showEditForm(@PathVariable("orderId") Long orderId, Model model) {
         model.addAttribute("title", "Edit order");
         Order order = orderService.editOrder(orderId);
+        model.addAttribute("admin", adminRepo.findAll());
+        model.addAttribute("courier", courierRepo.findAll());
         model.addAttribute("orderStatus", orderStatusRepo.findAll());
         model.addAttribute("order", order);
         return "edit-order";
@@ -68,6 +73,14 @@ public class OrderController {
     public String editOrder(@PathVariable("orderId") Long orderId,
                               @ModelAttribute Order order) {
         orderService.updateOrder(order, orderId);
-        return "redirect:/courier-table";
+        return "redirect:/orders/all";
+    }
+
+    @Transactional
+    @GetMapping("/delete/{orderId}")
+    public String deleteOrder(@PathVariable("orderId") Long orderId,
+                                @ModelAttribute Order order) {
+        orderService.deleteOrder(orderId);
+        return "redirect:/orders/all";
     }
 }
